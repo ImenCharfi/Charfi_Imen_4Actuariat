@@ -1,4 +1,7 @@
 package tn.esprit.Charfi_Imen_4Actuariat.repository;
 
-public interface MaintenanceRepository {
+import org.springframework.data.jpa.repository.JpaRepository;
+import tn.esprit.Charfi_Imen_4Actuariat.entities.Maintenance;
+
+public interface MaintenanceRepository extends JpaRepository<Maintenance, Long> {
 }

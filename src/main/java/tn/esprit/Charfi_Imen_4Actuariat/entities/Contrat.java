@@ -8,8 +8,7 @@ import lombok.Setter;
 
 import java.math.BigDecimal;
 import java.time.LocalDate;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.Set;
 
 @Entity
 @Getter
@@ -20,16 +19,15 @@ public class Contrat {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long idContrat;
+    private Long idContrat;//type wrapper (ya long ya integer)
 
     private LocalDate dateSignature;
     private BigDecimal montantTotal;
     private boolean valide;
 
     @OneToOne
-    @JoinColumn(name = "reservation_id")
     private Reservation reservation;
 
-    @OneToMany(mappedBy = "contrat", cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<Paiement> paiements = new ArrayList<>();
+    @OneToMany(mappedBy = "contrat", cascade = CascadeType.PERSIST, orphanRemoval = true)
+    private Set<Paiement> paiements ;
 }

@@ -9,9 +9,6 @@ import tn.esprit.Charfi_Imen_4Actuariat.entities.enums.CategorieVehicule;
 import tn.esprit.Charfi_Imen_4Actuariat.entities.enums.StatutVehicule;
 
 import java.math.BigDecimal;
-import java.util.ArrayList;
-import java.util.HashSet;
-import java.util.List;
 import java.util.Set;
 
 @Entity
@@ -38,21 +35,15 @@ public class Vehicule {
     private StatutVehicule statut;
 
     @ManyToOne
-    @JoinColumn(name = "agence_id")
     private Agence agence;
 
     @OneToMany(mappedBy = "vehicule")
-    private List<Maintenance> maintenances = new ArrayList<>();
+    private Set<Maintenance> maintenances ;
 
     @OneToMany(mappedBy = "vehicule")
-    private List<Reservation> reservations = new ArrayList<>();
+    private Set<Reservation> reservations ;
 
     @ManyToMany
-    @JoinTable(
-            name = "vehicule_equipement",
-            joinColumns = @JoinColumn(name = "vehicule_id"),
-            inverseJoinColumns = @JoinColumn(name = "equipement_id")
-    )
-    private Set<Equipement> equipements = new HashSet<>();
+    private Set<Equipement> equipements ;
 
 }
