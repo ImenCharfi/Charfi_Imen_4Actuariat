@@ -1,5 +1,6 @@
 package tn.esprit.Charfi_Imen_4Actuariat.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -29,5 +30,6 @@ public class Contrat {
     private Reservation reservation;
 
     @OneToMany(mappedBy = "contrat", cascade = CascadeType.PERSIST, orphanRemoval = true)
+    @JsonIgnore
     private Set<Paiement> paiements ;
 }

@@ -1,5 +1,6 @@
 package tn.esprit.Charfi_Imen_4Actuariat.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -25,8 +26,10 @@ public class Agence {
     private String telephone;
 
     @OneToMany(mappedBy = "agence")
+    @JsonIgnore
     private Set<Employe> employes ;
 
     @OneToMany(mappedBy = "agence")
+    @JsonIgnore
     private Set<Vehicule> vehicules ;
 }

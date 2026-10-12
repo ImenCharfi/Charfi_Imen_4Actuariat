@@ -1,5 +1,6 @@
 package tn.esprit.Charfi_Imen_4Actuariat.entities;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
@@ -33,5 +34,6 @@ public class Reservation {
     private Client client;
 
     @OneToOne(mappedBy = "reservation")
+    @JsonIgnore
     private Contrat contrat;
 }
